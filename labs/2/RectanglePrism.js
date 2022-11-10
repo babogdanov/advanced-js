@@ -1,11 +1,11 @@
-var Rectangle = require("./Rectangle")
+import { call, prototype } from "./Rectangle"
 
 function RectanglePrism(x,y,a,b,c){
-    Rectangle.call(this,x,y,a,b)
+    call(this,x,y,a,b)
     this.c = c
 }
 
-RectanglePrism.prototype = Object.create(Rectangle.prototype)
+RectanglePrism.prototype = Object.create(prototype)
 
 RectanglePrism.prototype.getVolume = function getVolume() {
     return this.a * this.b * this.c

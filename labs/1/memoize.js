@@ -2,21 +2,21 @@
 function memoize(func) {
     var passedParams = []
     return function () {
-        var argsAndRes = { args: [], res: null }
+        var passedArgsAndRes = { args: [], res: null }
         for (let i = 0; i < arguments.length; i++) {
-            argsAndRes.args.push(arguments[i])
+            passedArgsAndRes.args.push(arguments[i])
         }
-        var res = passedParams?.find(param => param.args.every((x, i) => x === argsAndRes.args[i]))?.res
-        if (res) {
-            console.log(`returned memoized value ${res}`)
-            return res
+        var currArgsAndRes = passedParams?.find(param => param.args.every((x, i) => x === passedArgsAndRes.args[i]))?.res
+        if (currArgsAndRes) {
+            console.log(`returned memoized value ${currArgsAndRes}`)
+            return currArgsAndRes
         }
        
 
-        res = func(...argsAndRes.args)
-        passedParams.push({ args: argsAndRes.args.slice(), res: res })
-        console.log(`calculated value ${res}`)
-        return res
+        currArgsAndRes = func(...passedArgsAndRes.args)
+        passedParams.push({ args: passedArgsAndRes.args.slice(), res: currArgsAndRes })
+        console.log(`calculated value ${currArgsAndRes}`)
+        return currArgsAndRes
     }
 }
 
