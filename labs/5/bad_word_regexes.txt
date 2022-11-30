@@ -1,0 +1,4 @@
+pizz
+doner
+p.*p
+v[er]+y
